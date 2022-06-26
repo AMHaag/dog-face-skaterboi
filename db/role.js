@@ -20,9 +20,13 @@ const role = {
   add: function (title, salary, departmentId) {
     const sql = `
     INSERT INTO role (title,salary,department_id)
-    VALUES (${title},${salary},${departmentId});
-
-SELECT * FROM role;`;
+    VALUES ('${title}',${salary},${departmentId});
+`;
+    db.query(sql, (err) => {
+      if (err) {
+        console.log(err);
+      }
+    });
   },
   updateTitle: function (id, newTitle) {
     const sql = `UPDATE role
@@ -67,7 +71,7 @@ SELECT * FROM role;`;
       if (err) {
         console.log(err);
       } else {
-        console.log('Role has been deleted')
+        console.log("Role has been deleted");
       }
     });
   },

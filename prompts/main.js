@@ -50,30 +50,51 @@ function mainMenuPrompt() {
       mainMenuPropmt();
     }
     if (add) {
-      addRecord(add)
+      addRecord(add);
     }
   });
 }
 
 function addRecord(content) {
-  if(content == 'department'){
-    console.log('add department')
+  if (content == "department") {
+    inquirer.prompt(questions.addDeparment).then((answers) => {
+      console.log(answers);
+    });
   }
-  if(content == 'role'){
-    console.log('add role')
+  if (content == "role") {
+    department.showAsArray();
+    inquirer.prompt(questions.addRole).then((answers) => {
+      role.add(answers.title, answers.salary, answers.id);
+      console.log("Complete!");
+      mainMenuPrompt();
+    });
   }
-  if(content == 'employee'){
-    console.log('add employee')
+  if (content == "employee") {
+    const newEmployee = { firstName: "", lastName: "", role: "", manager: "" };
+    inquirer.prompt(questions.addEmployee.askNames).then((answers) => {
+      newEmployee.firstName = answers.firstName;
+      newEmployee.lastName = answers.lastName;
+      role.showAll();
+      inquirer.prompt(questions.addEmployee.askRole).then((answers) => {
+        newEmployee.role = answers.role;
+        department.showAll();
+        inquirer.prompt(questions.addEmployee.askManager).then((answers) => {
+          newEmployee.manager = answers.manager;
+          // console.log(newEmployee);
+          employee.add(
+            newEmployee.firstName,
+            newEmployee.lastName,
+            newEmployee.role,
+            newEmployee.manager
+          );
+          mainMenuPrompt();
+        });
+      });
+    });
   }
-  if(content == 'main'){
-    mainMenuPrompt()
+  if (content == "main") {
+    mainMenuPrompt();
   }
-  
-
-  // inquirer.prompt(questions.askName).then((answer) => {
-  //   department.add(answer.newDepartment);
-  //   setTimeout(mainMenuPrompt, 150);
-  // });
 }
 
 function removeRecord() {

@@ -1,9 +1,4 @@
-const department = require('../db/department')
-
-let x = department.showAsArray()
-
-console.log(x)
-const addDeparment= [
+const addDeparment = [
   {
     prefix: "",
     type: "input",
@@ -13,6 +8,12 @@ const addDeparment= [
 ];
 
 const addRole = [
+  {
+    prefix: "",
+    type: "",
+    name: "id",
+    message: `What department ID should be used?`,
+  },
   {
     prefix: "",
     type: "input",
@@ -25,14 +26,39 @@ const addRole = [
     name: "salary",
     message: "What is the salary for this new role?",
   },
-  {
-    prefix: "",
-    type: "",
-    name: "departmentId",
-    message: "What is the ",
-  },
 ];
-const addEmployee=[]
+const addEmployee = {
+  askNames: [
+    {
+      prefix: "",
+      type: "input",
+      name: "firstName",
+      message: "What is their first name?",
+    },
+    {
+      prefix: "",
+      type: "input",
+      name: "lastName",
+      message: "What is their last name?",
+    },
+  ],
+  askRole: [
+    {
+      prefix: "",
+      type: "input",
+      name: "role",
+      message: "What role will they be taking (use ID)?",
+    },
+  ],
+  askManager: [
+    {
+      prefix: "",
+      type: "input",
+      name: "manager",
+      message: "Who is their supervisor (use ID)?",
+    },
+  ],
+};
 
 const removeMenu = [
   {
@@ -162,13 +188,13 @@ const mainMenu = [
         return "department";
       }
       if (valParse[2] === "role") {
-        return 'role';
+        return "role";
       }
       if (valParse[2] === "employee") {
-        return 'employee';
+        return "employee";
       }
       if (valParse[2] === "main") {
-        return 'main';
+        return "main";
       }
     },
     when(answers) {
@@ -196,4 +222,11 @@ const mainMenu = [
   },
 ];
 
-module.exports = { addDeparment, removeMenu, askId, mainMenu };
+module.exports = {
+  addDeparment,
+  removeMenu,
+  askId,
+  mainMenu,
+  addRole,
+  addEmployee,
+};

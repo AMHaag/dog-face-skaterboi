@@ -34,19 +34,21 @@ const department = {
   },
   showAsArray: function () {
     db.query(
-      {sql:`SELECT CONCAT(id," ",name) AS list FROM department;`,rowsAsArray:true},
+      `SELECT CONCAT(id," ",name) AS list FROM department;`,
       (err, rows) => {
         if (err) {
           console.log(`error found: ${err}`);
         } else {
-          return rows;
+          let array = [];
+          for(i=0;i<rows.length;i++){
+            array.push(rows[i].list)
+          }
+          console.log(array);
         }
       }
     );
   },
 };
 
-let x = department.showAsArray();
-console.log(x);
 
 module.exports = department;
