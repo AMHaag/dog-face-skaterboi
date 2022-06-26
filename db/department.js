@@ -21,7 +21,32 @@ const department = {
       }
     });
   },
-  remove: function (id) {}, //placeholder function
+  remove: function (id) {
+    const sql = `DELETE FROM department
+    WHERE id = ?`;
+    db.query(sql, id, (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        return;
+      }
+    });
+  },
+  showAsArray: function () {
+    db.query(
+      {sql:`SELECT CONCAT(id," ",name) AS list FROM department;`,rowsAsArray:true},
+      (err, rows) => {
+        if (err) {
+          console.log(`error found: ${err}`);
+        } else {
+          return rows;
+        }
+      }
+    );
+  },
 };
+
+let x = department.showAsArray();
+console.log(x);
 
 module.exports = department;

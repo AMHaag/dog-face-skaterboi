@@ -60,6 +60,17 @@ SELECT * FROM role;`;
       }
     });
   },
+  remove: function (id) {
+    const sql = `DELETE FROM role
+    WHERE id = ?`;
+    db.query(sql, id, (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log('Role has been deleted')
+      }
+    });
+  },
 };
 
 module.exports = role;
