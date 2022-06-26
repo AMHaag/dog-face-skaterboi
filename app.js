@@ -1,3 +1,3 @@
-const run = require('./prompts/main')
+const run = require("./prompts/main");
 
-run.mainMenuPrompt()
+run();

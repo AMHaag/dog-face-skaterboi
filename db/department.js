@@ -40,15 +40,25 @@ const department = {
           console.log(`error found: ${err}`);
         } else {
           let array = [];
-          for(i=0;i<rows.length;i++){
-            array.push(rows[i].list)
+          for (i = 0; i < rows.length; i++) {
+            array.push(rows[i].list);
           }
           console.log(array);
         }
       }
     );
   },
+  update: function (id, newName) {
+    const sql = `
+    UPDATE department
+    SET name = '${newName}'
+    WHERE id = ${id}`;
+    db.query(sql, (err) => {
+      if (err) {
+        console.log(err);
+      }
+    });
+  },
 };
-
 
 module.exports = department;

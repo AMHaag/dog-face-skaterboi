@@ -36,7 +36,7 @@ const role = {
       if (err) {
         console.log(err);
       } else {
-        role.showAll();
+        
       }
     });
   },
