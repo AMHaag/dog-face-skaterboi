@@ -4,9 +4,9 @@ const role = require("../db/role");
 const employee = require("../db/employee");
 const questions = require("./questions");
 
-// console.log(questions);
 
-mainMenuPrompt();
+
+
 function mainMenuPrompt() {
   answers = "";
   inquirer.prompt(questions.mainMenu).then((answers) => {
@@ -94,7 +94,6 @@ function addRecord(content) {
               .prompt(questions.addEmployee.askManager)
               .then((answers) => {
                 newEmployee.manager = answers.manager;
-                // console.log(newEmployee);
                 employee.add(
                   newEmployee.firstName,
                   newEmployee.lastName,
@@ -159,7 +158,6 @@ function removeRecord() {
 }
 
 function updateRecord(category) {
-  console.log(category);
   if (category === "main") {
     answers = {};
     mainMenuPrompt();

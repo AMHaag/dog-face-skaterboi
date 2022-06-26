@@ -1,8 +1,8 @@
 {
-  "name": "dog-face-skaterboi",
+  "name": "employee-tracker",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,7 +11,7 @@
     "url": "git+https://github.com/AMHaag/dog-face-skaterboi.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Aaron Haag",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/AMHaag/dog-face-skaterboi/issues"

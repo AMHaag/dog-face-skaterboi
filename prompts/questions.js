@@ -255,7 +255,7 @@ const askId = [
   },
 ];
 
-//TODO These are the questions to update records
+// These are the questions to update records
 const updateRecord = {
   recordId: [
     {
